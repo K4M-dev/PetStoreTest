@@ -30,6 +30,9 @@ dependencies {
 
     // JSON (Kotlin)
     testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
+
+    //Allure
+    testImplementation("io.qameta.allure:allure-junit5:2.27.0")
 }
 
 tasks.test {
