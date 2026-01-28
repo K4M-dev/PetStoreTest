@@ -3,12 +3,12 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(17)
 }
 
-java{
-    toolchain{
-        languageVersion.set(JavaLanguageVersion.of(22))
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
