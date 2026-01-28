@@ -23,7 +23,7 @@ class PetApi {
         given()
             .put("/pet")
 
-    fun deletePet(pet: Pet): Response =
+    fun deletePet(pet: Long): Response =
         given()
             .delete("/pet")
 }
