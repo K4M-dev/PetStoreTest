@@ -1,16 +1,25 @@
 package tests
 
 import api.PetApi
-import io.restassured.http.ContentType
+import io.qameta.allure.Epic
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 import model.Pet
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.util.UUID
+import kotlin.jvm.java
 
+@Epic("Pet Api")
+@Feature("CRUD operations")
 class PetCrudTest : BaseTest() {
 
     private val petApi = PetApi()
 
+    @Test
+    @DisplayName("Full pet CRUD lifecycle")
+    @Story("Pet lifecycle")
     fun petCRUDLifecycle() {
 
         val petId = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE

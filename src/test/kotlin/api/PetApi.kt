@@ -21,9 +21,13 @@ class PetApi {
 
     fun updatePet(pet: Pet): Response =
         given()
+            .contentType(ContentType.JSON)
+            .body(pet)
+            .`when`()
             .put("/pet")
 
-    fun deletePet(pet: Long): Response =
+    fun deletePet(id: Long): Response =
         given()
-            .delete("/pet")
+            .`when`()
+            .delete("/pet/{id}", id)
 }

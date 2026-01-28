@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    id("io.qameta.allure") version "2.12.0"
 }
 
 kotlin {
@@ -27,14 +28,29 @@ dependencies {
 
     // REST API
     testImplementation("io.rest-assured:rest-assured:5.4.0")
+    testImplementation("io.rest-assured:json-path:5.4.0")
 
     // JSON (Kotlin)
     testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
+    testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.0")
 
     //Allure
     testImplementation("io.qameta.allure:allure-junit5:2.27.0")
+    testRuntimeOnly("io.qameta.allure:allure-junit-platform:2.27.0")
 }
 
 tasks.test {
     useJUnitPlatform()
+    systemProperty("allure.results.directory", layout.buildDirectory.dir("allure-results").get().asFile.absolutePath)
+}
+
+allure {
+    version.set("2.27.0")
+    adapter {
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.27.0")
+            }
+        }
+    }
 }
